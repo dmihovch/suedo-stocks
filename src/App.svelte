@@ -1,9 +1,9 @@
 <script>
   import Title from "./lib/Title.svelte";
-  import Apple from "./lib/Apple.svelte";
+  import Portfolio from "./lib/Portfolio.svelte";
 </script>
 
 <div>
   <Title />
-  <Apple />
+  <Portfolio />
 </div>
