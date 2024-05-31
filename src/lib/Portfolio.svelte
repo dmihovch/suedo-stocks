@@ -1,10 +1,13 @@
 <script>
   import { appleSharePrice } from "./stores.js";
   import Apple from "./Apple.svelte";
+  import PortStockCard from "./PortStockCard.svelte";
   let userName = "Placeholder";
   let wallet = 9999;
 
   let sharesAppl = 0;
+
+  let stockNames = ["apple", "nvidia", "netflix", "google"];
 
   function handleBuyEvent(event) {
     let purchaseInfo = event.detail;
@@ -20,15 +23,10 @@
 <div class="portfolio-container">
   <h1>{userName}'s Portfolio</h1>
   <p>Wallet: ${wallet}</p>
-  <h2 class="portfolio-subcontainer">
-    Apple (AAPL):
-    <p>Shares: {sharesAppl}</p>
-    <p>Unit Price: {$appleSharePrice}</p>
-    <p>Total Value: {sharesAppl * $appleSharePrice}</p>
-  </h2>
+  <PortStockCard name="Apple (AAPL)" sharePrice={$appleSharePrice} />
 </div>
 
-<Apple on:purchaseShares={handleBuyEvent} />
+<!-- <Apple on:purchaseShares={handleBuyEvent} /> -->
 
 <style>
   .portfolio-container {
@@ -41,11 +39,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  .portfolio-subcontainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
   }
 </style>

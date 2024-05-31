@@ -4,6 +4,7 @@
   const dispatch = createEventDispatcher();
 
   const totalShares = 1000;
+  const name = "apple";
 
   let sharePrice = 100;
   appleSharePrice.set(sharePrice);
@@ -11,12 +12,15 @@
   let sharesPurchasedPending;
 
   function purchase() {
-    const purchaseInfo = {
-      sharePrice,
-      sharesPurchasedPending,
-    };
-    dispatch("purchaseShares", purchaseInfo);
-    sharesPurchasedPending = 0;
+    if (sharesPurchasedPending) {
+      const purchaseInfo = {
+        sharePrice,
+        sharesPurchasedPending,
+        name,
+      };
+      dispatch("purchaseShares", purchaseInfo);
+      sharesPurchasedPending = null;
+    }
   }
 
   function handleEnter(event) {
